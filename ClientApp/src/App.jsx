@@ -3,6 +3,9 @@ import { Link, Route, Switch } from 'react-router-dom'
 import './custom.scss'
 import { InProgress } from './pages/InProgress'
 import { Builds } from './pages/Builds'
+import { WishList } from './pages/WishList'
+import { AddBuilds } from './pages/AddBuilds'
+import { AddWishList } from './pages/AddWishList'
 
 export function App() {
   return (
@@ -14,9 +17,15 @@ export function App() {
       </div>
       <h1 className="title">Lego Log</h1>
       <div className="buttons">
-        <button className="learn-more">In Progress</button>
-        <button className="learn-more">Builds</button>
-        <button className="learn-more">Wish List</button>
+        <Link to="/">
+          <button className="lego-button">In Progress</button>
+        </Link>
+        <Link to="/Builds">
+          <button className="lego-button">Builds</button>
+        </Link>
+        <Link to="/WishList">
+          <button className="lego-button">Wish List</button>
+        </Link>
       </div>
       <Switch>
         <Route exact path="/">
@@ -24,6 +33,15 @@ export function App() {
         </Route>
         <Route exact path="/Builds">
           <Builds />
+        </Route>
+        <Route exact path="/WishList">
+          <WishList />
+        </Route>
+        <Route exact path="/AddBuilds">
+          <AddBuilds />
+        </Route>
+        <Route exact path="/AddWishList">
+          <AddWishList />
         </Route>
       </Switch>
       {/* <div>
