@@ -43,10 +43,7 @@ export function Builds() {
               <h2>Theme: {lego.theme}</h2>
               <p>Piece Count: {lego.pieceCount}</p>
               <p> Comments:</p>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit.
-              </p>
+              <p>{/* {buildList.comment} */}</p>
             </li>
           ))}
         </div>

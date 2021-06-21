@@ -1,3 +1,5 @@
+using System;
+
 namespace LegoLog.Models
 {
     public class Lego
@@ -7,5 +9,6 @@ namespace LegoLog.Models
         public string Theme { get; set; }
         public string PieceCount { get; set; }
         public string SerialNumber { get; set; }
+        public int BuildListId { get; set; }
     }
 }

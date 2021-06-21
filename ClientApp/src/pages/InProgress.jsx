@@ -13,7 +13,7 @@ export function InProgress() {
       <table className="in-progress-table">
         <thead>
           <tr>
-            <th>Bugatti</th>
+            <th>BBBugatti</th>
           </tr>
         </thead>
         <tbody>

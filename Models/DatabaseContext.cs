@@ -15,6 +15,7 @@ namespace LegoLog.Models
 
         // Add database tables here
         public DbSet<Lego> Legos { get; set; }
+        public DbSet<BuildList> BuildLists { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
