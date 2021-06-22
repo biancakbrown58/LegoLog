@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 export function Builds() {
-  // const [legos, setLegos] = useState([])
   const params = useParams()
   const id = params.id
 
@@ -42,7 +41,6 @@ export function Builds() {
                   ></img>
                 </div>
                 <h1>{lego.name}</h1>
-                {/* <h1>{}</h1> */}
                 <p>
                   <span
                     className="stars"

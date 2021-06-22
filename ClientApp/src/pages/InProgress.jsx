@@ -2,6 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 export function InProgress() {
+  const [builds, setBuilds] = useState([])
+
+  useEffect(function () {
+    async function loadBuilds() {
+      const response = await fetch('/api/BuildLists')
+      if (response.ok) {
+        const json = await response.json()
+        setBuilds(json)
+      }
+    }
+    loadBuilds()
+  }, [])
+
   return (
     <div>
       <h2 className="page-title">In Progress</h2>
@@ -10,6 +23,15 @@ export function InProgress() {
         src="https://www.placecage.com/g/300/200"
         alt=""
       />
+      <ul>
+        {builds.map((build) => (
+          <li key={build.id}>
+            <h5>
+              <Link to={`/buildlists/${build.id}`}>{build.rating}</Link>
+            </h5>
+          </li>
+        ))}
+      </ul>
       <table className="in-progress-table">
         <thead>
           <tr>
