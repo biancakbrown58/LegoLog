@@ -8,6 +8,7 @@ export function Builds() {
   const [builds, setBuilds] = useState({
     rating: 0,
     comment: '',
+    theme: '',
     legos: [],
   })
 

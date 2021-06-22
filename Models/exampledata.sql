@@ -1,6 +1,6 @@
 TRUNCATE TABLE "Legos", "BuildLists" RESTART IDENTITY;
-INSERT INTO "BuildLists" ("Rating", "Comment") VALUES (5, 'Fun Lego');
-INSERT INTO "BuildLists" ("Rating", "Comment") VALUES (5, 'Fun Lego');
+INSERT INTO "BuildLists" ("Rating", "Comment", "Theme") VALUES (5, 'Fun Lego', 'Technic');
+INSERT INTO "BuildLists" ("Rating", "Comment", "Theme") VALUES (5, 'Fun Lego', 'Creator');
 
 INSERT INTO "Legos" ("Name", "Theme", "PieceCount", "SerialNumber", "BuildListId") VALUES ('Bugatti Chiron', 'Technic', '3,599', '42083', 1 );
 INSERT INTO "Legos" ("Name", "Theme", "PieceCount", "SerialNumber", "BuildListId") VALUES ('Doms Dodge Charger', 'Technic', '1,077', '42111', 2);

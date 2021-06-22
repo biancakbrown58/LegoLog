@@ -27,7 +27,7 @@ export function InProgress() {
         {builds.map((build) => (
           <li key={build.id}>
             <h5>
-              <Link to={`/buildlists/${build.id}`}>{build.rating}</Link>
+              <Link to={`/buildlists/${build.id}`}>{build.theme}</Link>
             </h5>
           </li>
         ))}
