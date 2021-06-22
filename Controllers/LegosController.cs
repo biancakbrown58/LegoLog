@@ -30,14 +30,14 @@ namespace LegoLog.Controllers
         //
         // Returns a list of all your Legos
         //
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Lego>>> GetLegos()
-        {
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<Lego>>> GetLegos()
+        // {
 
-            // Uses the database context in `_context` to request all of the Legos, sort
-            // them by row id and return them as a JSON array.
-            return await _context.Legos.OrderBy(row => row.Id).ToListAsync();
-        }
+        //     // Uses the database context in `_context` to request all of the Legos, sort
+        //     // them by row id and return them as a JSON array.
+        //     return await _context.Legos.OrderBy(row => row.Id).ToListAsync();
+        // }
 
         // GET: api/Legos/5
         //

@@ -20,7 +20,7 @@ export function App() {
         <Link to="/">
           <button className="lego-button">In Progress</button>
         </Link>
-        <Link to="/Builds">
+        <Link to="/BuildLists">
           <button className="lego-button">Builds</button>
         </Link>
         <Link to="/WishList">
@@ -31,7 +31,7 @@ export function App() {
         <Route exact path="/">
           <InProgress />
         </Route>
-        <Route exact path="/Builds">
+        <Route exact path="/BuildLists/:id">
           <Builds />
         </Route>
         <Route exact path="/WishList">
