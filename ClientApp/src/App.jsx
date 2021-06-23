@@ -37,7 +37,7 @@ export function App() {
         <Route exact path="/WishList">
           <WishList />
         </Route>
-        <Route exact path="/AddBuilds">
+        <Route exact path="/BuildLists/:id/AddBuilds">
           <AddBuilds />
         </Route>
         <Route exact path="/AddWishList">
