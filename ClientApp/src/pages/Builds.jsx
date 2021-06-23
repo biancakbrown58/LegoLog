@@ -26,7 +26,7 @@ export function Builds() {
   return (
     <>
       <h2 className="page-title">Previous Builds</h2>
-      <Link to="/AddBuilds">
+      <Link to={`/BuildLists/${id}/AddBuilds`}>
         <button className="lego-button wish">+ Add to Build List</button>
       </Link>
       <div className="blog-card">

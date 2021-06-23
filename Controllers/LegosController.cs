@@ -122,6 +122,7 @@ namespace LegoLog.Controllers
         // supplies to the names of the attributes of our Lego POCO class. This represents the
         // new values for the record.
         //
+        // [HttpPost]
         [HttpPost]
         public async Task<ActionResult<Lego>> PostLego(Lego lego)
         {

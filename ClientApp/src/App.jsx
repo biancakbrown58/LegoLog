@@ -7,7 +7,7 @@ import { WishList } from './pages/WishList'
 import { AddBuilds } from './pages/AddBuilds'
 import { AddWishList } from './pages/AddWishList'
 
-export function App() {
+export function App({ id }) {
   return (
     <div>
       <div className="header">
@@ -20,7 +20,7 @@ export function App() {
         <Link to="/">
           <button className="lego-button">In Progress</button>
         </Link>
-        <Link to="/BuildLists">
+        <Link to={`/BuildLists/${id}`}>
           <button className="lego-button">Builds</button>
         </Link>
         <Link to="/WishList">
