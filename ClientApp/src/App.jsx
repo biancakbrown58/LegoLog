@@ -6,8 +6,10 @@ import { Builds } from './pages/Builds'
 import { WishList } from './pages/WishList'
 import { AddBuilds } from './pages/AddBuilds'
 import { AddWishList } from './pages/AddWishList'
+import { BuildLists } from './pages/BuildLists'
+import { LoadBuildTheme } from './components/LoadBuildTheme'
 
-export function App({ id }) {
+export function App() {
   return (
     <div>
       <div className="header">
@@ -20,7 +22,7 @@ export function App({ id }) {
         <Link to="/">
           <button className="lego-button">In Progress</button>
         </Link>
-        <Link to={`/BuildLists/${id}`}>
+        <Link to="/BuildLists">
           <button className="lego-button">Builds</button>
         </Link>
         <Link to="/WishList">
@@ -30,6 +32,9 @@ export function App({ id }) {
       <Switch>
         <Route exact path="/">
           <InProgress />
+        </Route>
+        <Route exact path="/BuildLists">
+          <BuildLists />
         </Route>
         <Route exact path="/BuildLists/:id">
           <Builds />

@@ -23,19 +23,21 @@ export function InProgress() {
         src="https://www.placecage.com/g/300/200"
         alt=""
       />
-      <ul>
-        {builds.map((build) => (
-          <li key={build.id}>
-            <h5>
-              <Link to={`/buildlists/${build.id}`}>{build.theme}</Link>
-            </h5>
-          </li>
-        ))}
-      </ul>
+      {/* <ul>
+        <button>
+          {builds.map((build) => (
+            <li key={build.id}>
+              <h5>
+                <Link to={`/buildlists/${build.id}`}>{build.theme}</Link>
+              </h5>
+            </li>
+          ))}
+        </button>
+      </ul> */}
       <table className="in-progress-table">
         <thead>
           <tr>
-            <th>BBBugatti</th>
+            <th>Bugatti</th>
           </tr>
         </thead>
         <tbody>

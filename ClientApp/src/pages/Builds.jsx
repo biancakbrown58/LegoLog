@@ -1,10 +1,38 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+// import { LoadBuildTheme } from '../components/LoadBuildTheme'
+
+// export function LoadBuildTheme() {
+//   const [builds, setBuilds] = useState([])
+
+//   useEffect(function () {
+//     async function loadBuilds() {
+//       const response = await fetch('/api/BuildLists')
+//       if (response.ok) {
+//         const json = await response.json()
+//         setBuilds(json)
+//       }
+//     }
+//     loadBuilds()
+//   }, [])
+//   return (
+//     <ul>
+//       {builds.map((build) => (
+//         <li key={build.id}>
+//           <h5>
+//             <Link to={`/buildlists/${build.id}`}>{build.theme}</Link>
+//           </h5>
+//         </li>
+//       ))}
+//     </ul>
+//   )
+// }
 
 export function Builds() {
   const params = useParams()
   const id = params.id
 
+  const [singleBuild, setSingleBuild] = useState([])
   const [builds, setBuilds] = useState({
     rating: 0,
     comment: '',
@@ -26,6 +54,18 @@ export function Builds() {
   return (
     <>
       <h2 className="page-title">Previous Builds</h2>
+
+      {/* trying to show the build themes to view on this page instead of in progress */}
+
+      {/* <ul>
+        <li>ok</li>
+        {singleBuild.map((build) => (
+          <li>
+            <LoadBuildTheme key={build.id} />
+            {build.theme}
+          </li>
+        ))}
+      </ul> */}
       <Link to={`/BuildLists/${id}/AddBuilds`}>
         <button className="lego-button wish">+ Add to Build List</button>
       </Link>
