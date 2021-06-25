@@ -92,6 +92,7 @@ export function Builds() {
                 <h2>Theme: {lego.theme}</h2>
                 <p>Piece Count: {lego.pieceCount}</p>
                 <p> Comments:</p>
+                {/* make this lego.comment */}
                 <p>{builds.comment}</p>
               </li>
             ))}

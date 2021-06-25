@@ -2,15 +2,17 @@
 using LegoLog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace LegoLog.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210625172412_AddWishList")]
+    partial class AddWishList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +38,7 @@ namespace LegoLog.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuildLists");
+                    b.ToTable("BuildList");
                 });
 
             modelBuilder.Entity("LegoLog.Models.Lego", b =>
@@ -83,24 +85,7 @@ namespace LegoLog.Migrations
 
                     b.HasIndex("BuildListId");
 
-                    b.HasIndex("WishListId");
-
                     b.ToTable("Legos");
-                });
-
-            modelBuilder.Entity("LegoLog.Models.WishList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Theme")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WishLists");
                 });
 
             modelBuilder.Entity("LegoLog.Models.Lego", b =>
@@ -110,20 +95,9 @@ namespace LegoLog.Migrations
                         .HasForeignKey("BuildListId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("LegoLog.Models.WishList", null)
-                        .WithMany("Legos")
-                        .HasForeignKey("WishListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("LegoLog.Models.BuildList", b =>
-                {
-                    b.Navigation("Legos");
-                });
-
-            modelBuilder.Entity("LegoLog.Models.WishList", b =>
                 {
                     b.Navigation("Legos");
                 });

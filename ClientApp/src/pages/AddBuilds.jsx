@@ -5,8 +5,9 @@ export function AddBuilds() {
   const params = useParams()
   const id = params.id
 
+  // const [newRating, setNewRating] = useState()
   const [newBuild, setNewBuild] = useState({
-    rating: 0,
+    rating: 5,
     comment: '',
     theme: '',
     legos: [],
@@ -24,7 +25,8 @@ export function AddBuilds() {
       const response = await fetch(`/api/BuildLists/${id}`)
       if (response.ok) {
         const apiData = await response.json()
-        setNewBuild(apiData)
+        setNewBuild(apiData, { comment: '' })
+        console.log(apiData.rating)
       }
     }
     fetchBuildList()
@@ -35,9 +37,11 @@ export function AddBuilds() {
     const value = event.target.value
 
     setAddLego({ ...addLego, [name]: value })
+    setNewBuild({ ...newBuild, [name]: value })
   }
-  // function handleStarRadioButton(newStars) {
-  //   setAddLego({ ...addLego })
+
+  // function handleStarRadioButton(newRating) {
+  //   setNewBuild({ ...newBuild, rating: newRating })
   // }
 
   async function handleNewLegoSubmit(event) {
@@ -48,7 +52,6 @@ export function AddBuilds() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(addLego),
     })
-
     if (response.ok) {
       // Clear the form
       setAddLego({
@@ -61,6 +64,21 @@ export function AddBuilds() {
       })
     }
   }
+  // async function handleNewRatingSubmit(event) {
+  //   event.preventDefault()
+
+  //   const response = await fetch(`/api/BuildLists`, {
+  //     method: 'POST',
+  //     headers: { 'content-type': 'application/json' },
+  //     body: JSON.stringify(newBuild),
+  //   })
+  //   if (response.ok) {
+  //     setNewBuild({
+  //       ...newBuild,
+  //       rating: 0,
+  //     })
+  //   }
+  // }
 
   return (
     <>
@@ -76,6 +94,16 @@ export function AddBuilds() {
           />
           <label>Name</label>
         </div>
+        {/* <div className="question">
+          <input
+            type="text"
+            required
+            name="comment"
+            value={newBuild.comment}
+            onChange={handleNewReviewTextFieldChange}
+          />
+          <label>Comment</label>
+        </div> */}
         <div className="question">
           <input
             type="text"
@@ -106,10 +134,87 @@ export function AddBuilds() {
           />
           <label>Serial Number</label>
         </div>
-        <div className="question">
-          <input type="radio" name="rating" />
-          <label>Rating</label>
-        </div>
+
+        {/* <div className="stars rating">
+          <input
+            id="star-rating-1"
+            type="radio"
+            name="rating"
+            value="1"
+            checked={newBuild.rating === 1}
+            onChange={() => handleStarRadioButton(1)}
+          />
+          <label htmlFor="star-rating-1">1 star</label>
+
+          <input
+            id="star-rating-2"
+            type="radio"
+            name="rating"
+            value="2"
+            checked={newBuild.rating === 2}
+            onChange={() => handleStarRadioButton(2)}
+          />
+          <label htmlFor="star-rating-2">2 star</label>
+
+          <input
+            id="star-rating-3"
+            type="radio"
+            name="rating"
+            value="3"
+            checked={newBuild.rating === 3}
+            onChange={() => handleStarRadioButton(3)}
+          />
+          <label htmlFor="star-rating-3">3 star</label>
+
+          <input
+            id="star-rating-4"
+            type="radio"
+            name="rating"
+            value="4"
+            checked={newBuild.rating === 4}
+            onChange={() => handleStarRadioButton(4)}
+          />
+          <label htmlFor="star-rating-4">4 star</label>
+
+          <input
+            id="star-rating-5"
+            type="radio"
+            name="rating"
+            value="5"
+            checked={newBuild.rating === 5}
+            onChange={() => handleStarRadioButton(5)}
+          />
+          <label htmlFor="star-rating-5">5 star</label>
+
+          <div className="star-rating">
+            <label
+              htmlFor="star-rating-1"
+              aria-label="1 star"
+              title="1 star"
+            ></label>
+            <label
+              htmlFor="star-rating-2"
+              aria-label="2 stars"
+              title="2 stars"
+            ></label>
+            <label
+              htmlFor="star-rating-3"
+              aria-label="3 stars"
+              title="3 stars"
+            ></label>
+            <label
+              htmlFor="star-rating-4"
+              aria-label="4 stars"
+              title="4 stars"
+            ></label>
+            <label
+              htmlFor="star-rating-5"
+              aria-label="5 stars"
+              title="5 stars"
+            ></label>
+          </div>
+        </div> */}
+
         <button className="lego-button submit">Submit</button>
       </form>
     </>
