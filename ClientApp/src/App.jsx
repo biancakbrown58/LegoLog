@@ -3,6 +3,7 @@ import { Link, Route, Switch } from 'react-router-dom'
 import './custom.scss'
 import { InProgress } from './pages/InProgress'
 import { Builds } from './pages/Builds'
+import { Wishes } from './pages/Wishes'
 import { WishLists } from './pages/WishLists'
 import { AddBuilds } from './pages/AddBuilds'
 import { AddWishList } from './pages/AddWishList'
@@ -43,12 +44,12 @@ export function App() {
           <Builds />
         </Route>
         <Route exact path="/WishLists/:id">
-          <WishLists />
+          <Wishes />
         </Route>
         <Route exact path="/BuildLists/:id/AddBuilds">
           <AddBuilds />
         </Route>
-        <Route exact path="/AddWishList">
+        <Route exact path="/AddWishList/:id/AddWishList">
           <AddWishList />
         </Route>
       </Switch>

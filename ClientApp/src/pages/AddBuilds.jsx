@@ -32,7 +32,7 @@ export function AddBuilds() {
       if (response.ok) {
         const apiData = await response.json()
         setNewBuild(apiData, { comment: '' })
-        // console.log(apiData.rating)
+        console.log(apiData.rating)
       }
     }
     fetchBuildList()
@@ -46,8 +46,11 @@ export function AddBuilds() {
     // setNewBuild({ ...newBuild, [name]: value })
   }
 
+  // function handleStarRadioButton(newRating) {
+  //   setNewBuild({ ...addLego, rating: newRating })
+  // }
   function handleStarRadioButton(newRating) {
-    setNewBuild({ ...addLego, rating: newRating })
+    setAddLego({ ...addLego, rating: newRating })
   }
 
   async function handleNewLegoSubmit(event) {
@@ -75,21 +78,6 @@ export function AddBuilds() {
       })
     }
   }
-  // async function handleNewRatingSubmit(event) {
-  //   event.preventDefault()
-
-  //   const response = await fetch(`/api/BuildLists`, {
-  //     method: 'POST',
-  //     headers: { 'content-type': 'application/json' },
-  //     body: JSON.stringify(newBuild),
-  //   })
-  //   if (response.ok) {
-  //     setNewBuild({
-  //       ...newBuild,
-  //       rating: 0,
-  //     })
-  //   }
-  // }
 
   return (
     <>

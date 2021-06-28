@@ -473,3 +473,25 @@ input[type='text'] {
 .description li {
   list-style: none;
 }
+.in-progress {
+  // display: flex;
+  margin: 2rem;
+  text-align: center;
+}
+.in-progress-label {
+  text-align: center;
+  align-items: center;
+  color: black;
+  padding-top: 1rem;
+  padding-right: 5rem;
+  // margin: auto;
+}
+.in-progress-checkbox {
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+ul li {
+  margin: 0;
+  padding-left: 0;
+}
