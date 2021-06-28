@@ -17,7 +17,13 @@ export function AddBuilds() {
     theme: '',
     pieceCount: '',
     serialNumber: '',
+    inProgress: false,
+    price: '',
+    comment: '',
+    rating: 0,
+    finishedLego: false,
     buildListId: id,
+    wishListId: id,
   })
 
   useEffect(() => {
@@ -26,7 +32,7 @@ export function AddBuilds() {
       if (response.ok) {
         const apiData = await response.json()
         setNewBuild(apiData, { comment: '' })
-        console.log(apiData.rating)
+        // console.log(apiData.rating)
       }
     }
     fetchBuildList()
@@ -37,12 +43,12 @@ export function AddBuilds() {
     const value = event.target.value
 
     setAddLego({ ...addLego, [name]: value })
-    setNewBuild({ ...newBuild, [name]: value })
+    // setNewBuild({ ...newBuild, [name]: value })
   }
 
-  // function handleStarRadioButton(newRating) {
-  //   setNewBuild({ ...newBuild, rating: newRating })
-  // }
+  function handleStarRadioButton(newRating) {
+    setNewBuild({ ...addLego, rating: newRating })
+  }
 
   async function handleNewLegoSubmit(event) {
     event.preventDefault()
@@ -60,6 +66,11 @@ export function AddBuilds() {
         theme: '',
         pieceCount: '',
         serialNumber: '',
+        inProgress: false,
+        price: '',
+        comment: '',
+        rating: 0,
+        finishedLego: false,
         // buildListId: 0,
       })
     }
@@ -94,16 +105,16 @@ export function AddBuilds() {
           />
           <label>Name</label>
         </div>
-        {/* <div className="question">
+        <div className="question">
           <input
             type="text"
             required
             name="comment"
-            value={newBuild.comment}
+            value={addLego.comment}
             onChange={handleNewReviewTextFieldChange}
           />
           <label>Comment</label>
-        </div> */}
+        </div>
         <div className="question">
           <input
             type="text"
@@ -135,13 +146,13 @@ export function AddBuilds() {
           <label>Serial Number</label>
         </div>
 
-        {/* <div className="stars rating">
+        <div className="stars rating">
           <input
             id="star-rating-1"
             type="radio"
             name="rating"
             value="1"
-            checked={newBuild.rating === 1}
+            checked={addLego.rating === 1}
             onChange={() => handleStarRadioButton(1)}
           />
           <label htmlFor="star-rating-1">1 star</label>
@@ -151,7 +162,7 @@ export function AddBuilds() {
             type="radio"
             name="rating"
             value="2"
-            checked={newBuild.rating === 2}
+            checked={addLego.rating === 2}
             onChange={() => handleStarRadioButton(2)}
           />
           <label htmlFor="star-rating-2">2 star</label>
@@ -161,7 +172,7 @@ export function AddBuilds() {
             type="radio"
             name="rating"
             value="3"
-            checked={newBuild.rating === 3}
+            checked={addLego.rating === 3}
             onChange={() => handleStarRadioButton(3)}
           />
           <label htmlFor="star-rating-3">3 star</label>
@@ -171,7 +182,7 @@ export function AddBuilds() {
             type="radio"
             name="rating"
             value="4"
-            checked={newBuild.rating === 4}
+            checked={addLego.rating === 4}
             onChange={() => handleStarRadioButton(4)}
           />
           <label htmlFor="star-rating-4">4 star</label>
@@ -181,7 +192,7 @@ export function AddBuilds() {
             type="radio"
             name="rating"
             value="5"
-            checked={newBuild.rating === 5}
+            checked={addLego.rating === 5}
             onChange={() => handleStarRadioButton(5)}
           />
           <label htmlFor="star-rating-5">5 star</label>
@@ -213,7 +224,7 @@ export function AddBuilds() {
               title="5 stars"
             ></label>
           </div>
-        </div> */}
+        </div>
 
         <button className="lego-button submit">Submit</button>
       </form>

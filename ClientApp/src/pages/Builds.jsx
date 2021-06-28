@@ -85,15 +85,17 @@ export function Builds() {
                 <p>
                   <span
                     className="stars"
-                    style={{ '--rating': 4.7 }}
+                    style={{ '--rating': lego.rating }}
                     aria-label="Star rating of this location is 4.7 out of 5."
-                  ></span>
+                  >
+                    {lego.rating}
+                  </span>
                 </p>
                 <h2>Theme: {lego.theme}</h2>
                 <p>Piece Count: {lego.pieceCount}</p>
-                <p> Comments:</p>
+                <p> Comments: {lego.comment}</p>
                 {/* make this lego.comment */}
-                <p>{builds.comment}</p>
+                {/* <p>{builds.comment}</p> */}
               </li>
             ))}
           </ul>
