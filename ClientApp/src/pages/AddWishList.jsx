@@ -129,20 +129,15 @@ export function AddWishList() {
           />
           <label>Price</label>
         </div>
-        <div className="question">
-          <input type="radio" />
-          <label>Interest Level</label>
-        </div>
-        {/* <div className="question">
-          <input
-            type="checkbox"
-            name="inProgress"
-            value={true}
-            onChange={handleInProgressChange}
-          />
-          <label>In Progress</label>
-        </div> */}
-        <button className="lego-button submit">Submit</button>
+
+        <button
+          className="lego-button submit"
+          type="submit"
+          value="Submit"
+          onSubmit={handleNewLegoSubmit}
+        >
+          Submit
+        </button>
       </form>
     </>
   )

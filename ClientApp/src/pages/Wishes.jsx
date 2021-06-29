@@ -43,14 +43,6 @@ export function Wishes() {
                 <h1>{lego.name}</h1>
 
                 <h2>Theme: {lego.theme}</h2>
-                <p>
-                  Interest Level: {lego.interestLevel}
-                  <span
-                    className="stars"
-                    style={{ '--rating': lego.interestLevel }}
-                    aria-label="Star rating of this location is 4.7 out of 5."
-                  ></span>
-                </p>
 
                 <p>Piece Count: {lego.pieceCount}</p>
                 <p> Price: ${lego.price}</p>
