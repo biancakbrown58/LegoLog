@@ -5,10 +5,10 @@ export function AddBuilds() {
   const params = useParams()
   const id = params.id
 
-  // const [newRating, setNewRating] = useState()
+  const [newRating, setNewRating] = useState()
   const [newBuild, setNewBuild] = useState({
-    rating: 5,
-    comment: '',
+    // rating: 5,
+    // comment: '',
     theme: '',
     legos: [],
   })
@@ -17,11 +17,11 @@ export function AddBuilds() {
     theme: '',
     pieceCount: '',
     serialNumber: '',
-    inProgress: false,
-    price: '',
+    // inProgress: false,
+    // price: '',
     comment: '',
-    rating: 0,
-    finishedLego: false,
+    rating: 2,
+    // finishedLego: false,
     buildListId: id,
     wishListId: id,
   })
@@ -32,7 +32,7 @@ export function AddBuilds() {
       if (response.ok) {
         const apiData = await response.json()
         setNewBuild(apiData, { comment: '' })
-        console.log(apiData.rating)
+        console.log(apiData)
       }
     }
     fetchBuildList()
@@ -43,15 +43,15 @@ export function AddBuilds() {
     const value = event.target.value
 
     setAddLego({ ...addLego, [name]: value })
-    // setNewBuild({ ...newBuild, [name]: value })
+    setNewBuild({ ...newBuild, [name]: value })
   }
 
-  // function handleStarRadioButton(newRating) {
-  //   setNewBuild({ ...addLego, rating: newRating })
-  // }
   function handleStarRadioButton(newRating) {
     setAddLego({ ...addLego, rating: newRating })
   }
+  // function handleStarRadioButton(newRating, checked) {
+  //   setAddLego({ ...addLego, rating: newRating.checked })
+  // }
 
   async function handleNewLegoSubmit(event) {
     event.preventDefault()
@@ -134,7 +134,8 @@ export function AddBuilds() {
           <label>Serial Number</label>
         </div>
 
-        <div className="stars rating">
+        {/* <div className="stars rating"> */}
+        <div className="rating">
           <input
             id="star-rating-1"
             type="radio"
@@ -214,7 +215,14 @@ export function AddBuilds() {
           </div>
         </div>
 
-        <button className="lego-button submit">Submit</button>
+        <button
+          className="lego-button submit"
+          type="submit"
+          value="Submit"
+          onSubmit={handleNewLegoSubmit}
+        >
+          Submit
+        </button>
       </form>
     </>
   )

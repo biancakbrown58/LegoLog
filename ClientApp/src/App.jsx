@@ -49,7 +49,7 @@ export function App() {
         <Route exact path="/BuildLists/:id/AddBuilds">
           <AddBuilds />
         </Route>
-        <Route exact path="/AddWishList/:id/AddWishList">
+        <Route exact path="/WishLists/:id/AddWishList">
           <AddWishList />
         </Route>
       </Switch>
