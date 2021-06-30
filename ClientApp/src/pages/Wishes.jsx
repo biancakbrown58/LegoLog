@@ -9,6 +9,9 @@ export function Wishes() {
     theme: '',
     legos: [],
   })
+  const [inProgress, setInProgress] = useState({
+    inProgress: '',
+  })
 
   useEffect(() => {
     async function loadLegos() {
@@ -20,7 +23,13 @@ export function Wishes() {
     }
     loadLegos()
   }, [id])
-
+  function handleChecked(event) {
+    const name = event.target.name
+    const value = event.target.value
+    console.log(event.target.value)
+    setInProgress(true)
+    // setNewBuild({ ...newBuild, [name]: value })
+  }
   return (
     <>
       <h2 className="page-title">Wish List</h2>
@@ -50,7 +59,9 @@ export function Wishes() {
                   <label className="in-progress-label">In Progress</label>
                   <input
                     type="checkbox"
+                    value={handleChecked}
                     className="in-progress-checkbox"
+                    onChange={handleChecked}
                   ></input>
                 </div>
               </li>

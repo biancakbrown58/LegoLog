@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
+import { authHeader } from '../auth'
 
 export function AddBuilds() {
   const params = useParams()
@@ -22,6 +24,7 @@ export function AddBuilds() {
     comment: '',
     rating: 2,
     // finishedLego: false,
+    photoURL: '',
     buildListId: id,
     wishListId: id,
   })
@@ -37,6 +40,9 @@ export function AddBuilds() {
     }
     fetchBuildList()
   }, [id])
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
 
   function handleNewReviewTextFieldChange(event) {
     const name = event.target.name
@@ -58,7 +64,7 @@ export function AddBuilds() {
 
     const response = await fetch(`/api/Legos`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', ...authHeader() },
       body: JSON.stringify(addLego),
     })
     if (response.ok) {
@@ -76,6 +82,47 @@ export function AddBuilds() {
         finishedLego: false,
         // buildListId: 0,
       })
+    }
+  }
+  async function onDropFile(acceptedFiles) {
+    // Do something with the files
+    const fileToUpload = acceptedFiles[0]
+    console.log(fileToUpload)
+
+    // Create a formData object so we can send this
+    // to the API that is expecting som form data.
+    const formData = new FormData()
+
+    // Append a field that is the form upload itself
+    formData.append('file', fileToUpload)
+
+    try {
+      // Use fetch to send an authorization header and
+      // a body containing the form data with the file
+      const response = await fetch('/api/Uploads', {
+        method: 'POST',
+        headers: {
+          ...authHeader(),
+        },
+        body: formData,
+      })
+
+      // If we receive a 200 OK response, set the
+      // URL of the photo in our state so that it is
+      // sent along when creating the restaurant,
+      // otherwise show an error
+      if (response.status === 200) {
+        const apiResponse = await response.json()
+
+        const url = apiResponse.url
+
+        setAddLego({ ...addLego, photoURL: url })
+      } else {
+        window.prompt('Unable to upload image')
+      }
+    } catch {
+      // Catch any network errors and show the user we could not process their upload
+      window.prompt('Unable to upload image')
     }
   }
 
@@ -212,6 +259,19 @@ export function AddBuilds() {
               aria-label="5 stars"
               title="5 stars"
             ></label>
+          </div>
+        </div>
+        {addLego.photoURL ? (
+          <p>
+            <img alt="Lego" width={200} src={addLego.photoURL} />
+          </p>
+        ) : null}
+        <div className="file-drop-zone">
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {isDragActive
+              ? 'Drop the files here ...'
+              : 'Drag a picture of the restaurant here to upload!'}
           </div>
         </div>
 

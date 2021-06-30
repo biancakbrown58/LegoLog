@@ -37,11 +37,14 @@ export function Builds() {
             {builds.legos.map((lego) => (
               <li key={lego.id}>
                 <div className="meta">
-                  <img
-                    className="photo"
-                    alt="lego"
-                    src="https://www.placecage.com/g/300/200"
-                  ></img>
+                  {lego.photoURL ? (
+                    <img
+                      alt="Lego"
+                      className="photo"
+                      height={200}
+                      src={lego.photoURL}
+                    />
+                  ) : null}
                 </div>
                 <h1>{lego.name}</h1>
                 <p>
