@@ -7,10 +7,7 @@ export function AddBuilds() {
   const params = useParams()
   const id = params.id
 
-  const [newRating, setNewRating] = useState()
   const [newBuild, setNewBuild] = useState({
-    // rating: 5,
-    // comment: '',
     theme: '',
     legos: [],
   })
@@ -26,7 +23,7 @@ export function AddBuilds() {
     // finishedLego: false,
     photoURL: '',
     buildListId: id,
-    wishListId: id,
+    wishListId: null,
   })
 
   useEffect(() => {
@@ -40,6 +37,7 @@ export function AddBuilds() {
     }
     fetchBuildList()
   }, [id])
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: onDropFile,
   })
@@ -55,9 +53,6 @@ export function AddBuilds() {
   function handleStarRadioButton(newRating) {
     setAddLego({ ...addLego, rating: newRating })
   }
-  // function handleStarRadioButton(newRating, checked) {
-  //   setAddLego({ ...addLego, rating: newRating.checked })
-  // }
 
   async function handleNewLegoSubmit(event) {
     event.preventDefault()
@@ -80,10 +75,24 @@ export function AddBuilds() {
         comment: '',
         rating: 0,
         finishedLego: false,
-        // buildListId: 0,
+        photoURL: '',
       })
     }
   }
+  // async function handleNewLegoSubmit(event) {
+  //   event.preventDefault()
+
+  //   const response = await fetch(`/api/Legos`, {
+  //     method: 'POST',
+  //     headers: { 'content-type': 'application/json', ...authHeader() },
+  //     body: JSON.stringify(addLego),
+  //   })
+  //   if (response.ok) {
+  //     // Clear the form
+  //     setNewBuild()
+  //     setAddLego()
+  //   }
+  // }
   async function onDropFile(acceptedFiles) {
     // Do something with the files
     const fileToUpload = acceptedFiles[0]

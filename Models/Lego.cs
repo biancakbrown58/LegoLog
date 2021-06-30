@@ -17,7 +17,7 @@ namespace LegoLog.Models
         public string PhotoURL { get; set; }
 
 
-        public int BuildListId { get; set; }
-        public int WishListId { get; set; }
+        public int? BuildListId { get; set; }
+        public int? WishListId { get; set; }
     }
 }
