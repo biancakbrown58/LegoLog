@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
+import { authHeader } from '../auth'
 export function Wishes() {
   const params = useParams()
   const id = params.id
@@ -10,7 +10,20 @@ export function Wishes() {
     legos: [],
   })
   const [inProgress, setInProgress] = useState({
-    inProgress: '',
+    inProgress: false,
+  })
+  const [lego, setLego] = useState({
+    name: '',
+    theme: '',
+    pieceCount: '',
+    serialNumber: '',
+    inProgress: false,
+    price: '',
+    comment: '',
+    rating: 0,
+    finishedLego: false,
+    // buildListId: null,
+    // wishListId: null,
   })
 
   useEffect(() => {
@@ -23,13 +36,20 @@ export function Wishes() {
     }
     loadLegos()
   }, [id])
-  function handleChecked(event) {
-    const name = event.target.name
-    const value = event.target.value
-    console.log(event.target.value)
-    setInProgress(true)
-    // setNewBuild({ ...newBuild, [name]: value })
-  }
+
+  // function handleProgressChange(event) {
+  //   const value = event.target.value
+  //   const name = event.target.name
+  //   setLego({ ...lego, inProgress: true })
+  // }
+  // async function handleChecked(event) {
+  //   console.log('Clicked')
+  //   const response = await fetch(`/api/WishLists/${id}`, {
+  //     method: 'PUT',
+  //     headers: { 'content-type': 'application/json', ...authHeader() },
+  //     body: JSON.stringify(lego),
+  //   })
+  // }
   return (
     <>
       <h2 className="page-title">Wish List</h2>
@@ -62,9 +82,11 @@ export function Wishes() {
                   <label className="in-progress-label">In Progress</label>
                   <input
                     type="checkbox"
-                    value={handleChecked}
+                    name="inProgress"
+                    value={lego.inProgress}
                     className="in-progress-checkbox"
-                    onChange={handleChecked}
+                    // onChange={handleProgressChange}
+                    // onClick={handleChecked}
                   ></input>
                 </div>
               </li>

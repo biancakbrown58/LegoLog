@@ -55,8 +55,6 @@ export function InProgress() {
             <h2>Theme: {lego.theme}</h2>
             <p>Piece Count: {lego.pieceCount}</p>
             <p> Comments: {lego.comment}</p>
-            {/* make this lego.comment */}
-            {/* <p>{builds.comment}</p> */}
           </li>
         ))}
       </ul>

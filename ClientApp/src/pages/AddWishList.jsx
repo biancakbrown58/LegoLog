@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { authHeader } from '../auth'
 
 export function AddWishList() {
   const params = useParams()
   const id = params.id
+
+  const history = useHistory()
 
   const [newWish, setNewWish] = useState({
     theme: '',
@@ -72,29 +74,19 @@ export function AddWishList() {
         finishedLego: false,
         photoURL: '',
       })
+      history.push(`/wishLists/${id}`)
     }
   }
-  // function handleInProgressChange(event) {
-  //   const name = event.target.name
-  //   const value = event.target.value
-  //   addLego.inProgress = true
-  // }
 
   async function onDropFile(acceptedFiles) {
-    // Do something with the files
     const fileToUpload = acceptedFiles[0]
     console.log(fileToUpload)
 
-    // Create a formData object so we can send this
-    // to the API that is expecting som form data.
     const formData = new FormData()
 
-    // Append a field that is the form upload itself
     formData.append('file', fileToUpload)
 
     try {
-      // Use fetch to send an authorization header and
-      // a body containing the form data with the file
       const response = await fetch('/api/Uploads', {
         method: 'POST',
         headers: {
@@ -103,10 +95,6 @@ export function AddWishList() {
         body: formData,
       })
 
-      // If we receive a 200 OK response, set the
-      // URL of the photo in our state so that it is
-      // sent along when creating the restaurant,
-      // otherwise show an error
       if (response.status === 200) {
         const apiResponse = await response.json()
 
@@ -117,7 +105,6 @@ export function AddWishList() {
         window.prompt('Unable to upload image')
       }
     } catch {
-      // Catch any network errors and show the user we could not process their upload
       window.prompt('Unable to upload image')
     }
   }
@@ -185,7 +172,7 @@ export function AddWishList() {
             <input {...getInputProps()} />
             {isDragActive
               ? 'Drop the files here ...'
-              : 'Drag a picture of the restaurant here to upload!'}
+              : 'Drag a picture of the Lego here to upload!'}
           </div>
         </div>
         <button

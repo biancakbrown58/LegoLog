@@ -71,6 +71,7 @@ tbody tr {
   border: 2px solid #d30c0c;
   text-align: center;
   margin-top: 2.5rem;
+  margin-left: 1.5rem;
   background-color: #fac4c4;
   padding: 12px 15px;
   color: black;
@@ -176,7 +177,6 @@ button {
   font-size: inherit;
   font-family: inherit;
 
-  margin: 5rem;
   &.lego-button {
     font-weight: 600;
     color: $text;
@@ -470,9 +470,17 @@ input[type='text'] {
   }
 }
 .submit {
-  margin-top: 1rem;
+  // margin-top: 1rem;
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+  margin-left: 7rem;
 }
-
+.file-drop-zone {
+  border: 1px solid #d30c0c;
+  border-radius: 60px;
+  padding: 0.5rem;
+  color: #d30c0c;
+}
 .description li {
   list-style: none;
 }
