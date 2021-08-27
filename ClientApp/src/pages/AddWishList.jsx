@@ -23,6 +23,7 @@ export function AddWishList() {
     price: '',
     comment: '',
     rating: 0,
+    photoURL: '',
     finishedLego: false,
     buildListId: null,
     wishListId: id,
@@ -99,8 +100,8 @@ export function AddWishList() {
         const apiResponse = await response.json()
 
         const url = apiResponse.url
-
-        setNewWish({ ...newWish, photoURL: url })
+        setAddLego({ ...addLego, photoURL: url })
+        // setNewWish({ ...newWish, photoURL: url })
       } else {
         window.prompt('Unable to upload image')
       }
@@ -162,9 +163,11 @@ export function AddWishList() {
           />
           <label>Price</label>
         </div>
-        {newWish.photoURL ? (
+        {addLego.photoURL ? (
+          // {newWish.photoURL ? (
           <p>
-            <img alt="Lego" width={200} src={newWish.photoURL} />
+            {/* <img alt="Lego" width={200} src={newWish.photoURL} /> */}
+            <img alt="Lego" width={200} src={addLego.photoURL} />
           </p>
         ) : null}
         <div className="file-drop-zone">

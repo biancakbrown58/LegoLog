@@ -9,38 +9,36 @@ export function InProgress() {
     legos: [],
   })
 
-  useEffect(
-    function () {
-      async function loadBuilds() {
-        const response = await fetch(`/api/WishLists${id}`)
-        if (response.ok) {
-          const json = await response.json()
-          setCurrentLego(json)
-        }
-      }
-      loadBuilds()
-    },
-    [id]
-  )
+  // useEffect(
+  //   function () {
+  //     async function loadBuilds() {
+  //       const response = await fetch(`/api/WishLists${id}`)
+  //       if (response.ok) {
+  //         const json = await response.json()
+  //         setCurrentLego(json)
+  //       }
+  //     }
+  //     loadBuilds()
+  //   },
+  //   [id]
+  // )
 
   return (
     <div>
       <h2 className="page-title">In Progress</h2>
       <img
         className="in-progress-photo"
-        src="https://www.placecage.com/g/300/200"
+        src="./images/Porsche.png"
         alt=""
+        height="100"
+        width="100"
       />
 
-      <ul>
+      {/* <ul>
         {currentLego.legos.map((lego) => (
           <li key={lego.id}>
             <div className="meta">
-              <img
-                className="photo"
-                alt="lego"
-                src="https://www.placecage.com/g/300/200"
-              ></img>
+              <img className="photo" alt="lego" src="/Porsche.png"></img>
             </div>
             <h1>{lego.name}</h1>
             <p>
@@ -57,20 +55,20 @@ export function InProgress() {
             <p> Comments: {lego.comment}</p>
           </li>
         ))}
-      </ul>
+      </ul> */}
 
       <table className="in-progress-table">
         <thead>
           <tr>
-            <th>Bugatti</th>
+            <th>Porsche 911 RSR</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>PIECES - 1,000</td>
+            <td>PIECES - 1,580</td>
           </tr>
           <tr>
-            <td>SN - 123456</td>
+            <td>SN - 42096</td>
           </tr>
           <tr>
             <td>THEME - Technic</td>
